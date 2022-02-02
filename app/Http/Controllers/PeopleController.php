@@ -23,9 +23,16 @@ class PeopleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view ('details');
+
+        if($id=='0')$id=10;
+        $person = Http::get('https://swapi.dev/api/people/'.$id.'/')->json();
+//        $person =$id;
+        $homeworld = Http::get('https://swapi.dev/api/planets')->json();
+        $species = Http::get('https://swapi.dev/api/species')->json();
+
+        return view('details', compact(['person','homeworld', 'species']));
     }
 
     /**

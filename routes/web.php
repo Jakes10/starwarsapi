@@ -20,7 +20,8 @@ Route::get('/', function () {
 //    return view('welcome');
 //});
 
-Route::get('/details', 'PeopleController@create')->name('details');
+Route::get('/details/{id}', 'App\Http\Controllers\PeopleController@create');
+Route::get('/home', 'App\Http\Controllers\PeopleController@index');
 
 
 //Route::get('/details', 'App\Http\Controllers\PeopleController@create');
